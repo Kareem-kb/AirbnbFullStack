@@ -3,6 +3,7 @@ import Link from "next/link"
 import logo from '@/public/Djangobnb logo.png'
 import SearchFilters from '@/app/Components/Navbar/SearchFilter'
 import UserNav from "@/app/Components/Navbar/Usernav"
+import AddPropertyButton from '@/app/Components/Navbar/AddPropertyButton'
 
 const Navbar = () =>{
     return(
@@ -18,7 +19,7 @@ const Navbar = () =>{
                 <div className="flex space-x-6">
                     <SearchFilters/>
                 </div>
-                <div className="flex items-center space-x-6"> <UserNav/></div>
+                <div className="flex items-center space-x-6"> <AddPropertyButton/> <UserNav/></div>
             </div>
         </div>
         </nav>
