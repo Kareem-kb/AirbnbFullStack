@@ -1,8 +1,19 @@
+'use client'
+
+import { useState } from 'react'
+import MenuLink from '@/app/Components/Navbar/MenuLink'
+import useLoginModal from '@/app/hooks/useLoginModal'
+import useSignupModal from '@/app/hooks/useSignupModal'
+
 const UserNav = () => {
+  const loginModal = useLoginModal()
+  const signupModal = useSignupModal()
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div className="p-2 relative inline-block border rounded-full">
-      <button className="flex items-center">
-        {" "}
+      <button onClick={() => setIsOpen(!isOpen)} className="flex items-center">
+        {' '}
         <svg
           fill="none"
           viewBox="0 0 24 24"
@@ -30,8 +41,26 @@ const UserNav = () => {
           />
         </svg>
       </button>
+      {isOpen && (
+        <div className="w-[220px] absolute top-[60px] right-0 bg-white border rounded-xl shadow-md flex flex-col cursor-pointer">
+          <MenuLink
+            onClick={() => {
+              loginModal.open()
+              setIsOpen(false)
+            }}
+            label="Log in"
+          />
+          <MenuLink
+            onClick={() => {
+              signupModal.open()
+              setIsOpen(false)
+            }}
+            label="Sign up"
+          />
+        </div>
+      )}
     </div>
-  );
-};
+  )
+}
 
-export default UserNav;
+export default UserNav
